@@ -1,0 +1,34 @@
+<form [formGroup]="form" (ngSubmit)="onSubmitForm()" class="p-4">
+  <h1>{{labels?.header}}</h1>
+  <div class="form-group mb-3">
+    <label for="input">{{labels?.input}}</label>
+    <textarea id="input" formControlName="input" class="form-control" rows="5"></textarea>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="key">{{labels?.key}}</label>
+
+    <textarea id="key" formControlName="key" class="form-control" rows="5" [ngClass]="{'is-invalid': canShowInputError('key') }"></textarea>
+    <div *ngIf="canShowInputError('key')"
+      class="invalid-feedback">
+      <ng-container *ngIf="form.controls['key'].errors?.['required'];else second">
+        Enter key
+      </ng-container>
+      <ng-template #second>
+        <ng-container *ngIf="form.controls['key'].errors?.['homophonicKey']">
+          Enter valid key
+        </ng-container>
+      </ng-template>
+    </div>
+
+
+  </div>
+  <div class="d-flex flex-wrap align-items-center justify-content-between">
+    <button type="button" class="btn btn-primary" (click)="getRandomKey()">{{labels?.generateButton}}</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">{{labels?.button}}</button>
+  </div>
+  <div class="form-group mt-3">
+    <label for="output">{{labels?.output}}</label>
+    <textarea id="output" formControlName="output" class="form-control" rows="5"></textarea>
+  </div>
+</form>

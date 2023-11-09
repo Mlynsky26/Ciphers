@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/regular.scss";
+@import "@fortawesome/fontawesome-free/scss/brands.scss";
+@import "_variables.scss";
+
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+
+body {
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgb(0, 36, 1) 100%);
+  min-height: 100vh;
+}
+
+.form-control,
+.form-control[disabled],
+.form-control:focus {
+  // background-color: rgba(255, 255, 255, 0.05);
+  background-color: darken($dark, 5%);
+  border-color: $dark;
+  box-shadow: 3px 3px 7px -1px $dark;
+
+  &:focus:not([disabled]):not(.is-invalid) {
+    border-color: $primary;
+  }
+}
+
+textarea {
+  resize: none;
+}
